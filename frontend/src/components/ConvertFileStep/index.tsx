@@ -59,7 +59,6 @@ export const ConvertFileStep: FC<ConvertFileStepProps> = () => {
         </button>
         <button
           type="button"
-          id="compress-button"
           disabled={isConverting}
           className="flex w-full items-center justify-center rounded-lg border border-blue-600 bg-blue-600 px-4 py-2.5 font-semibold text-white shadow-sm disabled:cursor-not-allowed disabled:opacity-30"
           onClick={convertFile}

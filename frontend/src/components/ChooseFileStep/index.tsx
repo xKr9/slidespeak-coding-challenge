@@ -16,7 +16,7 @@ export const ChooseFileStep: FC<ChooseFileStepProps> = () => {
       className="group cursor-pointer rounded-xl border border-dashed border-gray-400 bg-white px-6 py-16"
       {...getRootProps()}
     >
-      <input {...getInputProps()} id="choose-file-input" />
+      <input {...getInputProps()} />
       <div className="flex shrink-0 grow-0 flex-col items-center gap-2">
         <div className="mb-2 rounded-full bg-gray-100 p-2">
           <div className="grid place-items-center rounded-full bg-gray-200 p-2 [&>svg]:size-8">
@@ -28,7 +28,6 @@ export const ChooseFileStep: FC<ChooseFileStepProps> = () => {
         </p>
         <button
           type="button"
-          title="Choose a PowerPoint file to optimize."
           className="rounded-lg bg-blue-50 px-4 py-2.5 text-sm text-blue-700 transition-colors group-hover:bg-blue-100"
         >
           Choose file
