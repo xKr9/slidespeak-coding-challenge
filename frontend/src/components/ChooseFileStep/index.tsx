@@ -6,22 +6,9 @@ type ChooseFileStepProps = {
   // TODO: Add the required props.
 };
 
-const MAX_POWERPOINT_COMPRESS_FILE_SIZE = 100 * 1024 * 1024; // 100MB
-
 export const ChooseFileStep: FC<ChooseFileStepProps> = () => {
-  const handleFileDrop = (files: File[]) => {
-    if (files.length > 0) {
-      // TODO: Handle the file drop event.
-    }
-  };
-
   const { getRootProps, getInputProps } = useDropzone({
-    onDrop: useCallback(handleFileDrop, []),
-    accept: {
-      'application/vnd.openxmlformats-officedocument.presentationml.presentation': ['.pptx'],
-    },
-    maxSize: MAX_POWERPOINT_COMPRESS_FILE_SIZE,
-    maxFiles: 1,
+    // TODO: Add the required configuration.
   });
 
   return (

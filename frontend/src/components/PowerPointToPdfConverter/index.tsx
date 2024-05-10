@@ -2,7 +2,7 @@
 
 import {useState} from "react";
 import {ChooseFileStep} from "@/components/ChooseFileStep";
-import {ConvertFileStep} from "@/components/CompressFileStep";
+import {ConvertFileStep} from "../ConvertFileStep";
 import {DownloadFileStep} from "@/components/DownloadFileStep";
 
 type Step = 'CHOOSE_FILE' | 'CONVERT' | 'DOWNLOAD';

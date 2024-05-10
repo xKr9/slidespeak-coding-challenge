@@ -1,5 +1,4 @@
 import { FC, useState } from 'react';
-import { formatBytes } from '@/utils/file';
 import { LoadingIndicatorIcon } from '@/icons/LoadingIndicatorIcon';
 import { cn } from '@/utils/cn';
 
@@ -26,6 +25,11 @@ export const ConvertFileStep: FC<ConvertFileStepProps> = () => {
 
   const onCancel = () => {
     // TODO: Handle the cancel event.
+  }
+
+  const formatBytes = (bytes: number, decimals = 2) => {
+    // TODO: Implement the logic to format the bytes.
+    return bytes;
   }
 
   return (
