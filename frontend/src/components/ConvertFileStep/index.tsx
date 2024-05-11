@@ -1,36 +1,43 @@
-import { FC, useState } from 'react';
-import { LoadingIndicatorIcon } from '@/icons/LoadingIndicatorIcon';
-import { cn } from '@/utils/cn';
+import { FC, useState } from "react";
+import { LoadingIndicatorIcon } from "@/icons/LoadingIndicatorIcon";
+import { cn } from "@/utils/cn";
+import ApiClient from "@/api";
 
 type ConvertFileStepProps = {
-  // TODO: Add the required props.
+  currentFile: File | null;
+  onCancel: () => void;
+  onConvertSuccess: (url: string) => void;
 };
 
-export const ConvertFileStep: FC<ConvertFileStepProps> = () => {
+export const ConvertFileStep: FC<ConvertFileStepProps> = ({
+  currentFile,
+  onCancel,
+  onConvertSuccess,
+}: ConvertFileStepProps) => {
   const [isConverting, setIsConverting] = useState(false);
 
-  // TODO: Replace with the actual file.
-  const [file, setFile] = useState<File | null>(null);
+  const [file, setFile] = useState<File | null>(currentFile);
+
   if (!file) return null;
 
   const convertFile = async () => {
     setIsConverting(true);
 
     try {
-      // TODO: Convert the file to PDF via server API call.
+      const res = await ApiClient.files
+        .convertToPdf({ file: file })
+        .then((res) => {
+          onConvertSuccess(res.url);
+        });
     } finally {
       setIsConverting(false);
     }
   };
 
-  const onCancel = () => {
-    // TODO: Handle the cancel event.
-  }
-
   const formatBytes = (bytes: number, decimals = 2) => {
     // TODO: Implement the logic to format the bytes.
     return bytes;
-  }
+  };
 
   return (
     <div className="flex flex-col gap-4 rounded-xl bg-white p-6 shadow-md">
@@ -68,7 +75,7 @@ export const ConvertFileStep: FC<ConvertFileStepProps> = () => {
               <LoadingIndicatorIcon />
             </div>
           ) : (
-            'Convert'
+            "Convert"
           )}
         </button>
       </div>
@@ -88,12 +95,17 @@ const SelectBox: FC<CompressionSelectBoxProps> = ({
   description,
 }) => (
   <label className="group flex cursor-pointer gap-2 rounded-xl border-2 border-blue-200 bg-blue-25 p-4">
-    <input type="radio" name="compression" className="hidden" defaultChecked={checked} />
+    <input
+      type="radio"
+      name="compression"
+      className="hidden"
+      defaultChecked={checked}
+    />
     <div>
       <div className="grid size-4 place-items-center rounded-full border border-blue-600">
         <div
-          className={cn('h-2 w-2 rounded-full bg-blue-600 transition-opacity', {
-            'opacity-0 group-hover:opacity-80': !checked,
+          className={cn("h-2 w-2 rounded-full bg-blue-600 transition-opacity", {
+            "opacity-0 group-hover:opacity-80": !checked,
           })}
         />
       </div>
