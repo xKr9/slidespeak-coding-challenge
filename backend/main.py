@@ -36,7 +36,10 @@ async def convert(
     try:
         filename = os.path.splitext(os.path.basename(file.filename))[0]
         convert_file_to_pdf(f"tmp/{file.filename}")
+
+        upload_file(f"tmp/{file.filename}", os.getenv('BUCKET_NAME'), f"{file.filename}")
         upload_file(f"tmp/{filename}.pdf", os.getenv('BUCKET_NAME'), f"{filename}.pdf")
+        
         presigned_url = create_presigned_url(os.getenv('BUCKET_NAME'), f"{filename}.pdf")
         if presigned_url == None:
             return JSONResponse(status_code=500, content={"message": "Internal server error"})
