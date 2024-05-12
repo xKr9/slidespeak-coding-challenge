@@ -33,6 +33,7 @@ export const DownloadFileStep: FC<DownloadFileStepProps> = ({
         <a
           href={downloadUrl}
           download={downloadUrl}
+          target="_blank"
           type="button"
           className="flex w-full items-center justify-center rounded-lg border border-blue-600 bg-blue-600 px-4 py-2.5 font-semibold text-white shadow-sm disabled:cursor-not-allowed disabled:opacity-30"
         >

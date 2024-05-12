@@ -1,16 +1,11 @@
 from typing import Union
-
 import os
 from fastapi import FastAPI, File, UploadFile
-from pydantic import BaseModel
-from botocore.exceptions import ClientError
-import logging
 import boto3
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 from typing_extensions import Annotated
-from pathlib import Path
 
 load_dotenv()
 
